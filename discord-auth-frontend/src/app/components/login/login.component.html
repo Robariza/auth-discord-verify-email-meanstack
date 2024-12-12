@@ -1,0 +1,27 @@
+<div class="login-container">
+  <h2>Login</h2>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="email" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="password" class="form-control" />
+    </div>
+
+    <div *ngIf="errorMessage" class="alert alert-danger">
+      {{ errorMessage }}
+    </div>
+
+    <p>¿No tienes una cuenta? <a routerLink="/signup" >Regístrate aquí</a></p>
+
+    <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary" >Login</button>
+  </form>
+
+  <div class="discord-login">
+    <button (click)="onDiscordLogin()" class="btn btn-secondary">Login with Discord</button>
+  </div>
+</div>
